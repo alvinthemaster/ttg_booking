@@ -5,6 +5,8 @@ import 'providers/resort_provider.dart';
 import 'providers/favorite_provider.dart';
 import 'providers/booking_provider.dart';
 import 'providers/calendar_provider.dart';
+import 'providers/auth_provider.dart';
+import 'screens/welcome_screen.dart';
 import 'screens/main_screen.dart';
 
 void main() {
@@ -18,6 +20,7 @@ class TTGBookingApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ResortProvider()),
         ChangeNotifierProvider(create: (_) => FavoriteProvider()),
         ChangeNotifierProvider(create: (_) => BookingProvider()),
@@ -56,8 +59,55 @@ class TTGBookingApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const MainScreen(),
+        home: const AuthWrapper(),
       ),
+    );
+  }
+}
+
+class AuthWrapper extends StatefulWidget {
+  const AuthWrapper({super.key});
+
+  @override
+  State<AuthWrapper> createState() => _AuthWrapperState();
+}
+
+class _AuthWrapperState extends State<AuthWrapper> {
+  bool _initialized = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeAuth();
+  }
+
+  Future<void> _initializeAuth() async {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    await authProvider.initialize();
+    setState(() {
+      _initialized = true;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!_initialized) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
+    return Consumer<AuthProvider>(
+      builder: (context, authProvider, child) {
+        // Show main screen if user is logged in, otherwise show welcome screen
+        if (authProvider.isLoggedIn) {
+          return const MainScreen();
+        } else {
+          return const WelcomeScreen();
+        }
+      },
     );
   }
 }

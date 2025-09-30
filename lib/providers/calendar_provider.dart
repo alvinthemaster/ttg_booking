@@ -28,7 +28,7 @@ class CalendarProvider extends ChangeNotifier {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
   String? _selectedResortId;
-  Map<String, Map<DateTime, AvailabilitySlot>> _resortAvailability = {};
+  final Map<String, Map<DateTime, AvailabilitySlot>> _resortAvailability = {};
   CalendarFormat _calendarFormat = CalendarFormat.month;
 
   // Getters
@@ -118,8 +118,9 @@ class CalendarProvider extends ChangeNotifier {
     double multiplier = 1.0;
     
     // Demand-based pricing
-    if (occupancyRate > 0.8) multiplier += 0.5;
-    else if (occupancyRate > 0.6) multiplier += 0.3;
+    if (occupancyRate > 0.8) {
+      multiplier += 0.5;
+    } else if (occupancyRate > 0.6) multiplier += 0.3;
     else if (occupancyRate > 0.4) multiplier += 0.1;
     
     // Weekend pricing

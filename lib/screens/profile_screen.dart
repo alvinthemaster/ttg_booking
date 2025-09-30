@@ -40,10 +40,10 @@ class ProfileScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 50,
-                    backgroundColor: const Color(0xFF2E7D94),
-                    child: const Icon(
+                    backgroundColor: Color(0xFF2E7D94),
+                    child: Icon(
                       Icons.person,
                       size: 50,
                       color: Colors.white,

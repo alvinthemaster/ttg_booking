@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
               pinned: true,
               backgroundColor: Colors.white,
               elevation: 0,
-              flexibleSpace: FlexibleSpaceBar(
+              flexibleSpace: const FlexibleSpaceBar(
                 title: Text(
                   'TTG Resort Booking',
                   style: TextStyle(
@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Find Your Perfect Beach Resort',
                       style: TextStyle(
                         fontSize: 24,
@@ -70,7 +70,7 @@ class HomeScreen extends StatelessWidget {
             ),
 
             // Filter Section
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: FilterSection(),
             ),
 
@@ -81,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Top Rated Resorts',
                       style: TextStyle(
                         fontSize: 20,
@@ -124,9 +124,9 @@ class HomeScreen extends StatelessWidget {
             ),
 
             // All Resorts Section
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(20.0),
                 child: Text(
                   'All Resorts',
                   style: TextStyle(

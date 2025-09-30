@@ -176,7 +176,7 @@ class BookingDetailScreen extends StatelessWidget {
                     '${roomOption.name} x${roomBooking.quantity}',
                     '\$${(roomBooking.totalPrice * booking.totalNights).toStringAsFixed(2)}',
                   );
-                }).toList(),
+                }),
                 const Divider(),
                 _buildDetailRow(
                   'Total Amount',

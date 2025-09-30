@@ -381,7 +381,7 @@ class _BookingProcessScreenState extends State<BookingProcessScreen> {
             const SizedBox(height: 16),
             ...widget.resort.roomOptions.map((roomOption) => 
               _buildRoomOptionSelection(roomOption, bookingProvider)
-            ).toList(),
+            ),
           ],
         ),
       ),
@@ -523,7 +523,7 @@ class _BookingProcessScreenState extends State<BookingProcessScreen> {
                   ],
                 ),
               );
-            }).toList(),
+            }),
             const Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

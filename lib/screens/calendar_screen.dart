@@ -53,7 +53,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         ),
                         const SizedBox(height: 12),
                         DropdownButtonFormField<String>(
-                          value: calendarProvider.selectedResortId,
+                          initialValue: calendarProvider.selectedResortId,
                           hint: const Text('Choose a resort'),
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),

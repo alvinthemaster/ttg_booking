@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import '../models/resort.dart';
 
 class BookingProvider extends ChangeNotifier {
-  List<BookingRequest> _bookings = [];
+  final List<BookingRequest> _bookings = [];
   BookingRequest? _currentBooking;
 
   List<BookingRequest> get bookings => _bookings;
